@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools", "wheel", "torch"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "CUDA-GEMM"
+version = "0.1.0"
+description = "A CUDA GEMM optimization playground with parity, benchmarking, and profiling infrastructure."
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "torch",
+    "numpy",
+    "matplotlib",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src", "benchmarks" = "benchmarks"} 
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["benchmarks"]
