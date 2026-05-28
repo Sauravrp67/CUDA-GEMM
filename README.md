@@ -1,6 +1,6 @@
 # CUDA-GEMM
 
-CUDA-GEMM is a CUDA/C++ and PyTorch extension project for studying GEMM kernel optimization. It provides custom CUDA matrix multiplication kernels, parity tests against `torch.matmul`, a reproducible benchmark CLI, and Nsight profiling entrypoints.
+ A CUDA/C++ and PyTorch extension playground for exploring fundamentals of GEMM kernel optimization. It provides custom CUDA matrix multiplication kernels, parity tests against `torch.matmul`, a reproducible benchmark CLI results , and Nsight profiling entrypoints.
 
 Current benchmarked kernels:
 
