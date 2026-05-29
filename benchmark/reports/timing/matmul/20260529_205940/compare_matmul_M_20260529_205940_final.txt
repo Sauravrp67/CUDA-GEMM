@@ -1,0 +1,11 @@
+Final sweep summary for matmul at M=8192
+Kernel                                    Time (ms)  TFLOPS  Bandwidth (GB/s)  vs PyTorch  Speedup over Naive
+----------------------------------------  ---------  ------  ----------------  ----------  ------------------
+Naive GEMM (CUDA)                           1469.56    0.75              0.55       10.2%                1.0x
+Tiled GEMM (CUDA)                           1205.66    0.91              0.67       12.4%                1.2x
+Rectangular Tiled GEMM (CUDA)                616.53    1.78              1.31       24.3%                2.4x
+Register 2D Tiled GEMM (CUDA)                364.72    3.01              2.21       41.1%                4.0x
+Register 1D Tiled GEMM (CUDA)                375.46    2.93              2.14       39.9%                3.9x
+Vectorized Register 2D Tiled GEMM (CUDA)     167.31    6.57              4.81       89.5%                8.8x
+Warp-Tiled Register 2D GEMM (CUDA)           167.23    6.57              4.82       89.6%                8.8x
+torch.matmul                                 149.79    7.34              5.38      100.0%                9.8x
