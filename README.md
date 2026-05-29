@@ -2,6 +2,8 @@
 
  A CUDA/C++ and PyTorch extension playground for exploring fundamentals of GEMM kernel optimization. It provides custom CUDA matrix multiplication kernels, parity tests against `torch.matmul`, a reproducible benchmark with bar-plots, line-graphs, and latency records in JSON format, and Nsight profiling entrypoints.
 
+![Matmul benchmark sweep](benchmark/reports/plots/matmul/20260529_205940/matmul_benchmark_sweepM_20260529_205940.png)
+
 Current benchmarked kernels:
 
 - `naive_matmul`
