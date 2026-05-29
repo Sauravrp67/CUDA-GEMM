@@ -115,7 +115,8 @@ __global__ void vectorized_register2DTiledSgemm(
                 tempC.w = (alpha * PVALUE[i][j + 3] + beta * tempC.w);
 
                 reinterpret_cast<float4*>(&C[global_row_index * ldc + global_column_index])[0] = tempC;
-            } else {
+            } 
+            else {
                 for (size_t lane = 0; lane < 4; ++lane) {
                     const uint col_lane = global_column_index + lane;
                     if (col_lane < N) {

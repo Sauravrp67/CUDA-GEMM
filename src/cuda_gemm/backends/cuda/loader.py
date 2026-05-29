@@ -1,20 +1,14 @@
 """Loader for the CUDA GEMM extension module."""
 
 from __future__ import annotations
-
-
-def _backend():
-    from . import cuda_gemm_cuda
-
-    return cuda_gemm_cuda
-
+from . import cuda_gemm_cuda as _backend
 
 def gemm(A, B, transA: bool = False, transB: bool = False):
-    return _backend().gemm(A, B, transA, transB)
+    return _backend.gemm(A, B, transA, transB)
 
 
 def sgemm(A, B, transA: bool = False, transB: bool = False):
-    return _backend().sgemm(A, B, transA, transB)
+    return _backend.sgemm(A, B, transA, transB)
 
 
 def tiled_gemm(A, B, transA: bool = False, transB: bool = False):
@@ -22,7 +16,7 @@ def tiled_gemm(A, B, transA: bool = False, transB: bool = False):
 
 
 def threadcoarsedTiledgemm(A, B, transA: bool = False, transB: bool = False):
-    return _backend().threadcoarsedTiledgemm(A, B, transA, transB)
+    return _backend.threadcoarsedTiledgemm(A, B, transA, transB)
 
 
 def coarsened_tiled_matmul(A, B, transA: bool = False, transB: bool = False):
@@ -30,7 +24,7 @@ def coarsened_tiled_matmul(A, B, transA: bool = False, transB: bool = False):
 
 
 def regtiled2DSgemm(A, B, transA: bool = False, transB: bool = False):
-    return _backend().reg2DTiledsgemm(A, B, transA, transB)
+    return _backend.reg2DTiledsgemm(A, B, transA, transB)
 
 
 def reg2d_tiled_gemm(A, B, transA: bool = False, transB: bool = False):
@@ -38,7 +32,7 @@ def reg2d_tiled_gemm(A, B, transA: bool = False, transB: bool = False):
 
 
 def regtiled1DSgemm(A, B, transA: bool = False, transB: bool = False):
-    return _backend().reg1DTiledsgemm(A, B, transA, transB)
+    return _backend.reg1DTiledsgemm(A, B, transA, transB)
 
 
 def reg1d_tiled_gemm(A, B, transA: bool = False, transB: bool = False):
@@ -46,7 +40,7 @@ def reg1d_tiled_gemm(A, B, transA: bool = False, transB: bool = False):
 
 
 def vec_regtiled2DSgemm(A, B, transA: bool = False, transB: bool = False):
-    return _backend().vec_reg2DTiledsgemm(A, B, transA, transB)
+    return _backend.vec_reg2DTiledsgemm(A, B, transA, transB)
 
 
 def vec_reg2d_tiled_gemm(A, B, transA: bool = False, transB: bool = False):
@@ -54,7 +48,7 @@ def vec_reg2d_tiled_gemm(A, B, transA: bool = False, transB: bool = False):
 
 
 def warpTiled_vec_gemm(A, B, transA: bool = False, transB: bool = False):
-    return _backend().warpTiled_gemm(A, B, transA, transB)
+    return _backend.warpTiled_gemm(A, B, transA, transB)
 
 
 def warpTiled_gemm(A, B, transA: bool = False, transB: bool = False):

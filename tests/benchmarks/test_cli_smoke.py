@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from benchmarks.kernels.primitives.matmul import main as matmul_main
+from benchmark.kernels.primitives.matmul import main as matmul_main
 
 
 @pytest.mark.requires_cuda

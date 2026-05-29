@@ -1,4 +1,4 @@
-from benchmarks.profiling.common import profiler_kernel_regex
+from benchmark.profiling.common import profiler_kernel_regex
 
 
 def test_matmul_profiler_kernel_regex_covers_all_registered_custom_kernels():

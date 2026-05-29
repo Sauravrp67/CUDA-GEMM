@@ -1,7 +1,7 @@
 import json
 
-from benchmarks.harness.cases import MATMUL_CASE_SPEC
-from benchmarks.harness.reporting import (
+from benchmark.harness.cases import MATMUL_CASE_SPEC
+from benchmark.harness.reporting import (
     build_report_metadata,
     legacy_compare_report,
     legacy_sweep_report,

@@ -1,8 +1,15 @@
 import pytest
 import torch
 
-from benchmarks.harness.cases import BENCHMARK_CASES, MATMUL_CASE_SPEC
-from benchmarks.harness.runner import derive_performance_metrics
+from benchmark.harness.baselines import (
+    KERNEL_REGISTRY,
+    KERNEL_SPECS,
+    default_baseline_kernel,
+    default_kernel_list,
+    resolve_kernel_name,
+)
+from benchmark.harness.cases import BENCHMARK_CASES, MATMUL_CASE_SPEC
+from benchmark.harness.runner import derive_performance_metrics
 
 
 def test_matmul_metric_model_matches_closed_form_formula():
@@ -26,6 +33,29 @@ def test_matmul_metric_model_matches_closed_form_formula():
 
 def test_case_registry_contains_only_matmul():
     assert set(BENCHMARK_CASES) == {"matmul"}
+
+
+def test_kernel_specs_are_single_source_for_matmul_defaults():
+    specs = KERNEL_SPECS["matmul"]
+    expected_defaults = tuple(
+        spec.name for spec in specs if spec.default or spec.role == "baseline"
+    )
+
+    assert default_kernel_list("matmul") == expected_defaults
+    assert MATMUL_CASE_SPEC.default_kernels == expected_defaults
+    assert default_baseline_kernel("matmul") == "torch_matmul"
+    assert MATMUL_CASE_SPEC.baseline_kernel == "torch_matmul"
+
+
+def test_kernel_specs_expose_callables_and_valid_aliases():
+    registry = KERNEL_REGISTRY["matmul"]
+
+    for spec in KERNEL_SPECS["matmul"]:
+        assert spec.name in registry
+        assert callable(spec.callable)
+        assert resolve_kernel_name("matmul", spec.name) == spec.name
+        for alias in spec.aliases:
+            assert resolve_kernel_name("matmul", alias) == spec.name
 
 
 def test_derive_performance_metrics_rejects_non_positive_median():

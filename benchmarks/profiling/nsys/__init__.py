@@ -1,2 +1,0 @@
-"""Nsight Systems profiling helpers."""
-
